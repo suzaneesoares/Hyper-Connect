@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">hyperconnect</string>
+    <string name="title_activity_main">hyperconnect</string>
+    <string name="package_name">com.hyperconnect.app</string>
+    <string name="custom_url_scheme">com.hyperconnect.app</string>
+</resources>

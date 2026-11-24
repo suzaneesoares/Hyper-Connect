@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #061d2d;
+    --foreground: #fceea8;
+    --solar: #fceea8;
+    --solar-foreground: #094360;
+    --card: #0d4e6f;
+    --card-foreground: #fceea8;
+    --border: rgba(252, 238, 168, 0.15);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: rgba(252, 238, 168, 0.35);
+    color: #fff;
+  }
+}

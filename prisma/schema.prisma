@@ -1,0 +1,57 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id    Int    @id @default(autoincrement())
+  nome  String @db.VarChar(255)
+  email String @unique @db.VarChar(255)
+  senha String @db.VarChar(255)
+
+  @@map("Usuario")
+}
+
+model Tutor {
+  id           Int           @id @default(autoincrement())
+  nome         String        @db.VarChar(255)
+  cpf          String        @unique @db.VarChar(255)
+  telefone     String        @db.VarChar(20)
+  email        String        @unique @db.VarChar(255)
+  endereco     String        @db.VarChar(255)
+  pets         Pet[]
+  agendamentos Agendamento[]
+
+  @@map("Tutor")
+}
+
+model Pet {
+  id            Int           @id @default(autoincrement())
+  nome          String        @db.VarChar(255)
+  especie       String        @db.VarChar(100)
+  raca          String        @db.VarChar(100)
+  idade         Int
+  tutor_id      Int
+  tutor         Tutor         @relation(fields: [tutor_id], references: [id])
+  agendamentos  Agendamento[]
+
+  @@map("Pet")
+}
+
+model Agendamento {
+  id          Int      @id @default(autoincrement())
+  data_hora   DateTime
+  servico     String   @db.Text
+  observacao  String?  @db.Text
+  pet_id      Int
+  tutor_id    Int
+  pet         Pet      @relation(fields: [pet_id], references: [id])
+  tutor       Tutor    @relation(fields: [tutor_id], references: [id])
+
+  @@map("Agendamento")
+}
